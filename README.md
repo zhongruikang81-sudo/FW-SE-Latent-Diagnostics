@@ -94,10 +94,10 @@ $$w_j^{(1)} = u_j = [u_{j,1}, u_{j,2}, \dots, u_{j,r}]$$
 In practical implementation, after trimming the numerical null space, $U$ becomes an $r \times r$ square matrix, where $r \le N$ is the effective rank. By the fundamental properties of SVD, the columns of $U$ form an orthonormal basis of $\mathbb{R}^r$. Since $U$ is a square orthogonal matrix, its row vectors $u_j$ must also form a standard orthonormal basis of $\mathbb{R}^r$.
 
 This induces a critical geometric limitation: by removing the singular value diagonal matrix $S$, the coordinate $u_j$ loses all variance weights that characterize the relative importance of different dimensions. Consequently, the row vector $u_j$ becomes an isotropic unit vector in $\mathbb{R}^r$, satisfying:
-$$\sum_{k=1}^r u_{j,k}^2 = \|u_j\|_2^2 = 1$$
+$$\sum_{k=1}^r u_{j,k}^2 = \Vert u_j \Vert_2^2 = 1$$
 
 For an arbitrary out-of-distribution test sample, its projected energy onto any trimmed dimension exhibits complete symmetry. By the law of total probability, the expectation of the normalized energy distribution $E_{j,i}$ collapses to a uniform state:
-$$\mathbb{E}[E_{j,i}] = \mathbb{E}\left[ \frac{u_{j,i}^2}{\|u_j\|_2^2} \right] = \frac{1}{r} \sum_{k=1}^r \mathbb{E}[u_{j,k}^2] = \frac{1}{r} \mathbb{E}[1] = \frac{1}{r}$$
+$$\mathbb{E}[E_{j,i}] = \mathbb{E}\left[ \frac{u_{j,i}^2}{\Vert u_j \Vert_2^2} \right] = \frac{1}{r} \sum_{k=1}^r \mathbb{E}[u_{j,k}^2] = \frac{1}{r} \mathbb{E}[1] = \frac{1}{r}$$
 
 Because the energy allocation is stripped of the singular values’ variance guidance, the distribution trends toward a uniform allocation across all $r$ dimensions. Under this condition, the spectral entropy of any sample—whether factually correct or a hallucination—converges to its theoretical maximum:
 $$H_{\text{spec}} \to \ln(r)$$
