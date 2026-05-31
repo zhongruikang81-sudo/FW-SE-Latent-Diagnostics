@@ -1,0 +1,5 @@
+Classification,Metric,Classification Quality Index,Intra-Group Cohesion
+Traditional Semantics,Phase Map CSSI,0.9714610325417213,0.3470634785300986
+Our Formatting,Phase Map CSSI,1.0876568500186132,0.3745799487678013
+Traditional Semantics,Subspace Cosine,2.247484519958014,0.28397338539361955
+Our Formatting,Subspace Cosine,1.501201778423783,0.26149119635423024
