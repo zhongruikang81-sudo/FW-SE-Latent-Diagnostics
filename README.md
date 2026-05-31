@@ -1,5 +1,9 @@
 # From Semantics to Format Dominance: A High-Dimensional Topological Transformation Framework of Latent Phase Manifold in Large Language Models
 
+<p align="center">
+  <img src="assets/composite_comparison_grid.png" width="100%" alt="FW-SE Latent Phase Manifold Cover" />
+</p>
+
 [![Language](https://img.shields.io/badge/Language-Python-blue.svg)](https://www.python.org/)
 [![Framework](https://img.shields.io/badge/Framework-PyTorch-orange.svg)](https://pytorch.org/)
 [![Interpretability](https://img.shields.io/badge/Domain-Mechanistic%20Interpretability-red.svg)]()
