@@ -13,7 +13,7 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 # Plot styling configuration
-plt.rcParams['font.sans-serif'] = ['SimHei', 'Microsoft YaHei', 'Arial', 'sans-serif']
+plt.rcParams['font.sans-serif'] = ['Arial', 'Liberation Sans', 'sans-serif']
 plt.rcParams['axes.unicode_minus'] = False
 sns.set_theme(style="white")
 
@@ -58,24 +58,23 @@ def reconstruct_normalized_heatmap(csv_path, num_layers=26):
 def main():
     workspace_dir = r"E:\AI_Workspace"
     results_dir = os.path.join(workspace_dir, "结果图")
-    output_path = os.path.join(results_dir, "composite_comparison_grid.png")
-    os.makedirs(results_dir, exist_ok=True)
+    output_path = r"E:\AI_Workspace\FW_SE_Release\assets\composite_comparison_grid.png"
     
     # Grid configuration matrix: 3 columns (instruction formats) x 4 rows ( OOD datasets )
     grid_config = {
-        "MCQ选择题": [
+        "MCQ": [
             ("事实冲撞_同质_MMLU_CollBio_alpha_grid_search.csv", "MMLU CollBio (Biology MCQ)"),
             ("数学逻辑_同质_MMLU_ElemMath_alpha_grid_search.csv", "MMLU ElemMath (Math MCQ)"),
             ("事实冲撞_同质_SciQ_alpha_grid_search.csv", "SciQ (Science MCQ)"),
             ("System1陷阱_同质_CSQA_alpha_grid_search.csv", "CSQA (Commonsense MCQ)")
         ],
-        "主观陈述题": [
+        "QA": [
             ("数学逻辑_同质_MathQA_alpha_grid_search.csv", "MathQA (Math QA)"),
             ("事实冲撞_HaluEval_alpha_grid_search.csv", "HaluEval (Fact QA)"),
             ("事实冲撞_同质_TriviaQA_alpha_grid_search.csv", "TriviaQA (Trivia QA)"),
             ("System-1陷阱_TruthfulQA_alpha_grid_search.csv", "TruthfulQA (Truthful QA)")
         ],
-        "CoT推理题": [
+        "CoT": [
             ("数学逻辑_GSM8K_alpha_grid_search.csv", "GSM8K (CoT Math)"),
             ("数学逻辑_同质_MultiArith_alpha_grid_search.csv", "MultiArith (CoT Math)"),
             ("数学逻辑_同质_SVAMP_alpha_grid_search.csv", "SVAMP (CoT Math)"),
@@ -86,7 +85,7 @@ def main():
     print("[*] Assembling and rendering OOD phase transition heatmaps...")
     
     fig, axes = plt.subplots(4, 3, figsize=(18, 20), sharex=True, sharey=True)
-    columns = ["MCQ选择题", "主观陈述题", "CoT推理题"]
+    columns = ["MCQ", "QA", "CoT"]
     
     for col_idx, col_name in enumerate(columns):
         configs = grid_config[col_name]
@@ -98,10 +97,10 @@ def main():
                 # Plot legend inside the empty cell
                 ax.axis('off')
                 ax.text(0.5, 0.5, 
-                        "【拓扑分析图例】\n\n"
-                        "🔴 红色 (正值):\n错题组 SVD 谱熵更高\n(模型计算拓扑发散)\n\n"
-                        "🔵 蓝色 (负值):\n对题组 SVD 谱熵更高\n(模型计算拓扑收敛)\n\n"
-                        "⚪ 白色 (零值):\n对错组无显著性差异\n(相变平稳区)", 
+                        "[ Topology Legend ]\n\n"
+                        "🔴 Red (Positive):\nIncorrect group has higher SVD spectral entropy\n(Computational topology diverges)\n\n"
+                        "🔵 Blue (Negative):\nCorrect group has higher SVD spectral entropy\n(Computational topology converges)\n\n"
+                        "⚪ White (Zero):\nNo significant difference between groups\n(Stable phase transition region)", 
                         ha='center', va='center', fontsize=12, fontweight='bold',
                         bbox=dict(boxstyle='round,pad=1', facecolor='#F9F9F9', edgecolor='#DDDDDD'))
                 continue
