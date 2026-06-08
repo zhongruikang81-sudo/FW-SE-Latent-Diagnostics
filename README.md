@@ -4,6 +4,11 @@
   <img src="assets/composite_comparison_grid.png" width="100%" alt="FW-SE Latent Geometry Cover" />
 </p>
 
+<p align="center">
+  <img src="assets/The Core Pipeline.png" width="100%" alt="The Core Pipeline" />
+</p>
+
+
 [![Language](https://img.shields.io/badge/Language-Python-blue.svg)](https://www.python.org/)
 [![Framework](https://img.shields.io/badge/Framework-PyTorch-orange.svg)](https://pytorch.org/)
 [![Interpretability](https://img.shields.io/badge/Domain-Mechanistic%20Interpretability-red.svg)]()
